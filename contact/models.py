@@ -23,6 +23,7 @@ class Inquiry(models.Model):
     service      = models.CharField(max_length=50, choices=SERVICES)
     complaint    = models.TextField(max_length=500)
     department   = models.CharField(max_length=50, choices=DEPARTMENTS)
+    date         = models.DateTimeField(default=timezone.now)
     
     def __str__(self):
         return self.complaint
