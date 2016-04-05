@@ -1,18 +1,13 @@
-<html>
-    <head>
-        <title>Portal</title>
-    </head>
-    <body>
-        <div>
-            <h1><a href="">Inquiry Portal</a></h1>
-        </div>
-        
+{% extends 'contact/base.html' %}
+
+{% block content %}
     {% for inquiry in inquiries %}
-        <div>
-            <p>Date: {{ inquiry.date }}</p>
-            <h1><a href="">{{ inquiry.service }}</a></h1>
+        <div class="inquiry">
+            <h1><a href="{% url 'inquiry_detail' pk=inquiry.pk %}">{{ inquiry.fullname }}</a></h1>
             <p>{{ inquiry.complaint|linebreaks }}</p>
+            <div class="date">
+                {{ inquiry.date }}
+            </div>
         </div>
     {% endfor %}
-    </body>
-</html>
+{% endblock %}
